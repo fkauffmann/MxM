@@ -15,3 +15,6 @@
 + Florence Melan : DB design and UX programming
 + Fabrice Kauffmann : Back-end coding
 
+## History
+
++ 2017-07-28 : Initial version (code skeleton)
