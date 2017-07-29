@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+<form method='POST' action='/categories/delete/confirm'>
+<input type='hidden' name='categoryid' value='<%= category ? categoryid : "" %>'>
+<p>Delete <%= category.categoryname %> ?</p>
+<br/><input type='submit' value='DELETE' /> <a href="/categories/view?categoryid=<%= categoryid %>">Cancel</a>
+</form>
+
+</body>
+</html>

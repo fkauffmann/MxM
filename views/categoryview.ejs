@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+<h3><%= category ? categoryid : "" %></h3>
+<p>Category Name: <%= category.categoryname %></p>
+<p>Reusable: <%= category.reusable ? "[x]" : "[ ]" %></p>
+
+<% if (categoryid) { %>
+    <hr/>
+    <p><a href="/categories/delete?categoryid=<%= categoryid %>">Delete</a>
+     | <a href="/categories/edit?categoryid=<%= categoryid %>">Edit</a></p>
+<% } %>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<% include header%>
+<% include navbar%>
+
+<div class="container-fluid icon-container" >
+  <div class="row">
+    <div class="col-sm-12 onclickStyle" onclick="location.href='/categories/add'">
+      Add&nbsp;&nbsp;&nbsp;
+      <span class="fa-stack fa-lg fa-2x fa-2x fa-2x">
+        <i class="fa fa-circle fa-stack-2x" style="color:#0275D8; "></i>
+        <i class="fa fa-plus fa-stack-1x" style="color:#BFDCF5"></i>
+      </span>
+    </div>
+  </div>
+</div>
+<% if (categorylist.length > 0) { %>
+  <div class="container-fluid icon-container" ><%
+  for (var category of categorylist) {
+    %><div class="row">
+        <div class="col-sm-6 onclickStyle" onclick="location.href='/categories/view?categoryid=<%= category.categoryid %>'">
+          <%= category.categoryname %>
+        </div>
+        <!--edit -->
+        <div class="col-sm-3 onclickStyle" onclick="location.href='/categories/edit?categoryid=<%= category.categoryid %>'">
+          <span class="fa-stack fa-lg fa-2x fa-2x fa-2x">
+					  <i class="fa fa-circle fa-stack-2x" style="color:#0275D8; "></i>
+					  <i class="fa fa-pencil-square fa-stack-1x" style="color:#BFDCF5"></i>
+					</span>
+        </div>
+        <!-- delete -->
+        <div class="col-sm-3 onclickStyle" onclick="location.href='/categories/delete?categoryid=<%= category.categoryid %>'">
+          <span class="fa-stack fa-lg fa-2x fa-2x fa-2x">
+					  <i class="fa fa-circle fa-stack-2x" style="color:#0275D8; "></i>
+					  <i class="fa fa-trash-o fa-stack-1x" style="color:#BFDCF5"></i>
+					</span>
+        </div>
+  </div><%
+  }
+  %></div>
+<% } %>
+<% include bodyEndAndScripts%>
