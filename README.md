@@ -18,3 +18,4 @@
 ## History
 
 + 2017-07-28 : Initial version (code skeleton)
++ 2017-07-29 : Item class added (fk)
