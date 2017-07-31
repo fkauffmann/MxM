@@ -44,7 +44,7 @@ exports.create = function(itemid,	shortname, categoryid, maker,	makerref,	provid
     });
 };
 
-exports.update = functionitemid,	shortname, categoryid, maker,	makerref,	provider,	providerurl, lastpurchasedate, price,	vat, unit, width,	height,	diameter,	picture, note, quantityinstock,	quantityordered, stocklimitalert) {
+exports.update = function(itemid,	shortname, categoryid, maker,	makerref,	provider,	providerurl, lastpurchasedate, price,	vat, unit, width,	height,	diameter,	picture, note, quantityinstock,	quantityordered, stocklimitalert) {
     return exports.connectDB().then(() => {
         var item = new Item(itemid,	shortname, categoryid, maker,	makerref,	provider,	providerurl, lastpurchasedate, price,	vat, unit, width,	height,	diameter,	picture, note, quantityinstock,	quantityordered, stocklimitalert);
         return new Promise((resolve, reject) => {
@@ -73,7 +73,7 @@ exports.read = function(itemid) {
                 else if (!row) {
                     reject(new Error("No item found for " + itemid));
                 } else {
-                    var item = Item(row.itemid,	row.shortname, row.categoryid, row.maker,	row.makerref,	row.provider,	row.providerurl, row.lastpurchasedate, row.price,	row.vat, row.unit, row.width,	row.height,	row.diameter,	row.picture, row.note, row.quantityinstock,	row.quantityordered, row.stocklimitalert);
+                    var item = new Item(row.ItemID,	row.ShortName, row.CategoryID, row.Maker,	row.MakerRef,	row.Provider,	row.ProviderURL, row.LastPurchaseDate, row.Price,	row.VAT, row.Unit, row.Width,	row.Height,	row.Diameter,	row.Picture, row.Note, row.QuantityInStock,	row.QuantityOrdered, row.StockLimitAlert);
                     log('READ '+ util.inspect(item));
                     resolve(item);
                 }
