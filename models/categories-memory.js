@@ -31,7 +31,7 @@ exports.create = function(categoryid, categoryname, reusable) {
     return exports.connectDB().then(() => {
         var category = new Category(categoryid, categoryname, reusable);
         return new Promise((resolve, reject) => {
-            db.run("INSERT INTO Category ( CategoryID, CategoryName, Reusable) "+
+            db.run("INSERT INTO Category ( CategoryID, CategoryName, Reusable ) "+
                 "VALUES ( ?, ? , ? );",
                 [ categoryid, categoryname, reusable ], err => {
                     if (err) reject(err);
