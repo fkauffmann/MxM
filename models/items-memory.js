@@ -7,6 +7,7 @@ const log     = require('debug')('notes:sqlite3-model');
 const error   = require('debug')('notes:error');
 
 const Item    = require('./Item');
+const Category    = require('./Category');
 
 sqlite3.verbose();
 var db; // store the database connection here
@@ -65,19 +66,21 @@ exports.update = function(itemid,	shortname, categoryid, maker,	makerref,	provid
 exports.read = function(itemid) {
     return exports.connectDB().then(() => {
         return new Promise((resolve, reject) => {
-            db.get("SELECT * FROM Item WHERE ItemID = ?",
-                [ itemid ], (err, row) => {
 
-                if (err) reject(err);
-                // Fixed error left over from previous chapters
-                else if (!row) {
-                    reject(new Error("No item found for " + itemid));
-                } else {
-                    var item = new Item(row.ItemID,	row.ShortName, row.CategoryID, row.Maker,	row.MakerRef,	row.Provider,	row.ProviderURL, row.LastPurchaseDate, row.Price,	row.VAT, row.Unit, row.Width,	row.Height,	row.Diameter,	row.Picture, row.Note, row.QuantityInStock,	row.QuantityOrdered, row.StockLimitAlert);
-                    log('READ '+ util.inspect(item));
-                    resolve(item);
-                }
-            });
+				db.get("SELECT * FROM Item WHERE ItemID = ?",
+						[ itemid ], (err, row) => {
+
+						if (err) reject(err);
+						// Fixed error left over from previous chapters
+						else if (!row) {
+								reject(new Error("No item found for " + itemid));
+						} else {
+								var item = new Item(row.ItemID,	row.ShortName, row.CategoryID, row.Maker,	row.MakerRef,	row.Provider,	row.ProviderURL, row.LastPurchaseDate, row.Price,	row.VAT, row.Unit, row.Width,	row.Height,	row.Diameter,	row.Picture, row.Note, row.QuantityInStock,	row.QuantityOrdered, row.StockLimitAlert);
+								log('READ '+ util.inspect(item));
+								resolve(item);
+						}
+				});
+
         });
     });
 };
@@ -125,6 +128,26 @@ exports.count = function() {
                     if (err) return reject(err);
                     log('COUNT '+ util.inspect(row));
                     resolve(row.count);
+                });
+        });
+    });
+};
+
+exports.categorylist = function() {
+    return exports.connectDB().then(() => {
+        return new Promise((resolve, reject) => {
+            db.all("select * from Category order by CategoryName",
+                (err, rows) => {
+                    if (err) return reject(err);
+
+										var categorylist = [];
+
+										rows.forEach(function (row) {
+						            var category = new Category(row.CategoryID, row.CategoryName, row.Reusable);
+												categorylist.push(category);
+						        })
+
+                    resolve(categorylist);
                 });
         });
     });

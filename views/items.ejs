@@ -16,7 +16,7 @@
   <div class="container-fluid icon-container" ><%
   for (var item of itemlist) {
     %><div class="row">
-        <div class="col-sm-6 onclickStyle" onclick="location.href='/items/view?itemid=<%= item.itemid %>'">
+        <div class="col-sm-6 onclickStyle" onclick="location.href='/items/edit?itemid=<%= item.itemid %>'">
           <%= item.shortname %>
         </div>
         <!--edit -->

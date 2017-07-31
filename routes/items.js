@@ -31,7 +31,7 @@ router.get('/', function(req, res, next) {
       return Promise.all(keyPromises);
   })
   .then(itemlist => {
-    res.render('items', { title: 'Items', itemlist: itemlist });
+	  res.render('items', { title: 'Items', itemlist: itemlist });
   })
   .catch(err => { next(err); });
 });
@@ -39,12 +39,18 @@ router.get('/', function(req, res, next) {
 
 // Add Item (create)
 router.get('/add', (req, res, next) => {
-    res.render('itemedit', {
-        title: "Add an Item",
-        docreate: true,
-        itemid: "",
-        item: undefined
-    });
+
+	items.categorylist()
+	.then(categorylist => {
+		res.render('itemedit', {
+	      title: "Add an Item",
+	      docreate: true,
+	      itemid: "",
+	      item: undefined
+	  });
+	})
+	.catch(err => { next(err); });
+
 });
 
 // Save Item (update)
@@ -70,12 +76,16 @@ router.post('/save', (req, res, next) => {
 router.get('/edit', (req, res, next) => {
     items.read(req.query.itemid)
     .then(item => {
-        res.render('itemedit', {
-            title: item ? ("Edit " + item.shortname) : "Add an Item",
-            docreate: false,
-            itemid: req.query.itemid,
-            item: item
-        });
+		items.categorylist()
+		.then(categorylist => {
+			res.render('itemedit', {
+	            title: item ? ("Edit " + item.shortname) : "Add an Item",
+	            docreate: false,
+	            itemid: req.query.itemid,
+							categorylist : categorylist,
+	            item: item
+	        });
+		})
     })
     .catch(err => { next(err); });
 });

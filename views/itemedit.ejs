@@ -9,7 +9,20 @@
 <br/>Shortname<br/>
 <input type='text' name='shortname' value='<%= item ? item.shortname : "" %>' />
 <br/>Category<br/>
-<input type='text' name='categoryid' value='<%= item ? item.categoryid : "" %>' />
+<select name="categoryid">
+<%
+for ( var i = 0; i < categorylist.length; i++ )
+{
+		var categoryid = item ? item.categoryid : "";
+		var selected = (categoryid == categorylist[i].categoryid) ? "selected" : "";
+    %>
+		<option value="<%=categorylist[ i ].categoryid %>" <%=selected %>><%=categorylist[ i ].categoryname %></option>
+		<%
+}
+%>
+</select>
+
+
 <br/>Maker<br/>
 <input type='text' name='maker' value='<%= item ? item.maker : "" %>' />
 <br/>Maker Reference<br/>
