@@ -46,7 +46,8 @@ router.get('/add', (req, res, next) => {
 	      title: "Add an Item",
 	      docreate: true,
 	      itemid: "",
-	      item: undefined
+	      item: undefined,
+				categorylist: categorylist
 	  });
 	})
 	.catch(err => { next(err); });
