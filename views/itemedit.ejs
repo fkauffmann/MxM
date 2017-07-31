@@ -1,0 +1,50 @@
+<% include header%>
+<% include navbar%>
+
+<form method='POST' action='/items/save'>
+<!-- hidden input fields-->
+<input  type='hidden' name='docreate' value='<%= docreate ? "create" : "update"%>'>
+<input type='hidden' name='itemid' value='<%= item ? itemid : "" %>'/>
+
+<br/>Shortname<br/>
+<input type='text' name='shortname' value='<%= item ? item.shortname : "" %>' />
+<br/>Category<br/>
+<input type='text' name='categoryid' value='<%= item ? item.categoryid : "" %>' />
+<br/>Maker<br/>
+<input type='text' name='maker' value='<%= item ? item.maker : "" %>' />
+<br/>Maker Reference<br/>
+<input type='text' name='makerref' value='<%= item ? item.makerref : "" %>' />
+<br/>Provider<br/>
+<input type='text' name='provider' value='<%= item ? item.provider : "" %>' />
+<br/>Provider URL<br/>
+<input type='text' name='providerurl' value='<%= item ? item.providerurl : "" %>' />
+<br/>Last Purchase Date<br/>
+<input type='text' name='lastpurchasedate' value='<%= item ? item.lastpurchasedate : "" %>' />
+<br/>Price<br/>
+<input type='text' name='price' value='<%= item ? item.price : "" %>' />
+<br/>VAT<br/>
+<input type='text' name='vat' value='<%= item ? item.vat : "" %>' />
+<br/>Unit<br/>
+<input type='text' name='unit' value='<%= item ? item.unit : "" %>' />
+<br/>Width<br/>
+<input type='text' name='width' value='<%= item ? item.width : "" %>' />
+<br/>Height<br/>
+<input type='text' name='height' value='<%= item ? item.height : "" %>' />
+<br/>Diameter<br/>
+<input type='text' name='diameter' value='<%= item ? item.diameter : "" %>' />
+<br/>Picture<br/>
+<input type='text' name='picture' value='<%= item ? item.picture : "" %>' />
+<br/>Note<br/>
+<input type='text' name='note' value='<%= item ? item.note : "" %>' />
+<br/>Quantity in Stock<br/>
+<input type='text' name='quantityinstock' value='<%= item ? item.quantityinstock : "" %>' />
+<br/>Quantity ordered<br/>
+<input type='text' name='quantityordered' value='<%= item ? item.quantityordered : "" %>' />
+<br/>Stock Limit Alert<br/>
+<input type='text' name='stocklimitalert' value='<%= item ? item.stocklimitalert : "" %>' />
+
+<br/>
+<input type='submit' value='Submit' />
+</form>
+
+<% include bodyEndAndScripts%>

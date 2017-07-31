@@ -49,7 +49,7 @@ exports.update = function(itemid,	shortname, categoryid, maker,	makerref,	provid
         var item = new Item(itemid,	shortname, categoryid, maker,	makerref,	provider,	providerurl, lastpurchasedate, price,	vat, unit, width,	height,	diameter,	picture, note, quantityinstock,	quantityordered, stocklimitalert);
         return new Promise((resolve, reject) => {
             db.run("UPDATE Item "+
-                "SET ShortName = ?, CategoryID = ?, Maker = ?, MakerRef = ?, Provider = ?, ProviderURL = ?, LastPurchaseDate = ?, Price = ?, VAT = ?, Unit = ?, Width = ?, Height = ?, Diameter = ?, Picture = ?, Note = ?, QuantityInStock = ?, QuantityOrdered = ?, StockLimitAlert " +
+                "SET ShortName = ?, CategoryID = ?, Maker = ?, MakerRef = ?, Provider = ?, ProviderURL = ?, LastPurchaseDate = ?, Price = ?, VAT = ?, Unit = ?, Width = ?, Height = ?, Diameter = ?, Picture = ?, Note = ?, QuantityInStock = ?, QuantityOrdered = ?, StockLimitAlert = ? " +
                 "WHERE ItemID = ?",
                 [ shortname, categoryid, maker,	makerref,	provider,	providerurl, lastpurchasedate, price,	vat, unit, width,	height,	diameter,	picture, note, quantityinstock,	quantityordered, stocklimitalert, itemid ], err => {
                     if (err) reject(err);
