@@ -17,96 +17,116 @@ function guid() {
 
 router.get('/', function(req, res, next) {
   categories.keylist()
-  .then(keylist => {
+    .then(keylist => {
       var keyPromises = [];
       for (var key of keylist) {
-          keyPromises.push(
-              categories.read(key)
-              .then(category => {
-                  return { categoryid: category.categoryid, categoryname: category.categoryname };
-              })
-          );
+        keyPromises.push(
+          categories.read(key)
+          .then(category => {
+            return {
+              categoryid: category.categoryid,
+              categoryname: category.categoryname
+            };
+          })
+        );
       }
       return Promise.all(keyPromises);
-  })
-  .then(categorylist => {
-    res.render('categories', { title: 'Categories', categorylist: categorylist });
-  })
-  .catch(err => { next(err); });
+    })
+    .then(categorylist => {
+      res.render('categories', {
+        title: 'Categories',
+        categorylist: categorylist
+      });
+    })
+    .catch(err => {
+      next(err);
+    });
 });
 
 // Add Category (create)
 router.get('/add', (req, res, next) => {
-    res.render('categoryedit', {
-        title: "Add a Category",
-        docreate: true,
-        categoryid: "",
-        category: undefined
-    });
+  res.render('categoryedit', {
+    title: "Add a Category",
+    docreate: true,
+    categoryid: "",
+    category: undefined
+  });
 });
 
 // Save Category (update)
 router.post('/save', (req, res, next) => {
-    var p;
-    if (req.body.docreate === "create") {
-        p = categories.create(guid(),
-                req.body.categoryname, req.body.reusable ? true : false);
-    } else {
-        p = categories.update(req.body.categoryid,
-                req.body.categoryname, req.body.reusable ? true : false);
-    }
-    p.then(category => {
-        //res.redirect('/categories/view?categoryid=' + req.body.categoryid);
-        res.redirect('/categories');
+  var p;
+  if (req.body.docreate === "create") {
+    p = categories.create(guid(),
+      req.body.categoryname, req.body.reusable ? true : false);
+  } else {
+    p = categories.update(req.body.categoryid,
+      req.body.categoryname, req.body.reusable ? true : false);
+  }
+  p.then(category => {
+      //res.redirect('/categories/view?categoryid=' + req.body.categoryid);
+      res.redirect('/categories');
     })
-    .catch(err => { next(err); });
+    .catch(err => {
+      next(err);
+    });
 });
 
 // Read Category (read)
 router.get('/view', (req, res, next) => {
-    categories.read(req.query.categoryid)
+  categories.read(req.query.categoryid)
     .then(category => {
-        res.render('categoryview', {
-            title: category ? category.categoryname : "",
-            categoryid: req.query.categoryid,
-            category: category
-        });
+      res.render('categoryview', {
+        title: category ? category.categoryname : "",
+        categoryid: req.query.categoryid,
+        category: category
+      });
     })
-    .catch(err => { next(err); });
+    .catch(err => {
+      next(err);
+    });
 });
 
 // Edit Category (update)
 router.get('/edit', (req, res, next) => {
-    categories.read(req.query.categoryid)
+  categories.read(req.query.categoryid)
     .then(category => {
-        res.render('categoryedit', {
-            title: category ? ("Edit " + category.categoryname) : "Add a Category",
-            docreate: false,
-            categoryid: req.query.categoryid,
-            category: category
-        });
+      res.render('categoryedit', {
+        title: category ? ("Edit " + category.categoryname) : "Add a Category",
+        docreate: false,
+        categoryid: req.query.categoryid,
+        category: category
+      });
     })
-    .catch(err => { next(err); });
+    .catch(err => {
+      next(err);
+    });
 });
 
 // Ask to delete Category (delete)
 router.get('/delete', (req, res, next) => {
-    categories.read(req.query.categoryid)
+  categories.read(req.query.categoryid)
     .then(category => {
-        res.render('categorydelete', {
-            title: category ? category.categoryname : "",
-            categoryid: req.query.categoryid,
-            category: category
-        });
+      res.render('categorydelete', {
+        title: category ? category.categoryname : "",
+        categoryid: req.query.categoryid,
+        category: category
+      });
     })
-    .catch(err => { next(err); });
+    .catch(err => {
+      next(err);
+    });
 });
 
 // Really delete Category (delete)
 router.post('/delete/confirm', (req, res, next) => {
-    categories.delete(req.body.categoryid)
-    .then(() => { res.redirect('/categories'); })
-    .catch(err => { next(err); });
+  categories.delete(req.body.categoryid)
+    .then(() => {
+      res.redirect('/categories');
+    })
+    .catch(err => {
+      next(err);
+    });
 });
 
 module.exports = router;
