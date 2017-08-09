@@ -1,15 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
+<% include header%>
+<% include navbar%>
 
-</head>
-<body>
 
 <form method='POST' action='/categories/delete/confirm'>
+
 <input type='hidden' name='categoryid' value='<%= category ? categoryid : "" %>'>
-<p>Delete <%= category.categoryname %> ?</p>
-<br/><input type='submit' value='DELETE' /> <a href="/categories">Cancel</a>
+<div class="container-fluid icon-container" >
+  <div class="row">
+    <div class="col-sm-12 bigTitle blue" >
+        Delete
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+        <%= category.categoryname %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6" >
+        Reusable:
+    </div>
+    <div class="col-sm-6" >
+        <input class="form-check-input" type='checkbox' name='reusable' <%= (category && category.reusable==1) ? "checked" : "" %> />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 noBgColor">
+      <input type='submit' value='Delete' class="btn btn-success" />
+    </div>
+    <div class="col-sm-6 noBgColor">
+      <a href="/categories" class="btn btn-warning" >Cancel</a>
+    </div>
+  </div>
+</div>
+
 </form>
 
-</body>
-</html>
+<% include bodyEndAndScripts%>

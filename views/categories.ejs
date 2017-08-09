@@ -3,7 +3,7 @@
 
 <div class="container-fluid icon-container" >
   <div class="row">
-    <div class="col-sm-12 onclickStyle" onclick="location.href='/categories/add'">
+    <div class="col-sm-12 onclickStyle bigTitle blue" onclick="location.href='/categories/add'">
       Add&nbsp;&nbsp;&nbsp;
       <span class="fa-stack fa-lg fa-2x fa-2x fa-2x">
         <i class="fa fa-circle fa-stack-2x" style="color:#0275D8; "></i>
@@ -16,7 +16,7 @@
   <div class="container-fluid icon-container" ><%
   for (var category of categorylist) {
     %><div class="row">
-        <div class="col-sm-6 onclickStyle" onclick="location.href='/categories/view?categoryid=<%= category.categoryid %>'">
+        <div class="col-sm-6 mediumTitle gray" onclick="location.href='/categories/view?categoryid=<%= category.categoryid %>'">
           <%= category.categoryname %>
         </div>
         <!--edit -->
