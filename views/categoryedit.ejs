@@ -12,7 +12,7 @@
         Category Name:
     </div>
     <div class="col-sm-6" >
-        <input class="form-control" type='text' name='categoryname' value='<%= category ? category.categoryname : "" %>' />
+        <input class="form-control" minlength="2" type="text"  name='categoryname' value='<%= category ? category.categoryname : "" %>' required/>
     </div>
   </div>
   <div class="row">

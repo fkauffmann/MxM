@@ -16,7 +16,7 @@
   <div class="container-fluid icon-container" ><%
   for (var category of categorylist) {
     %><div class="row">
-        <div class="col-sm-6 mediumTitle gray" onclick="location.href='/categories/view?categoryid=<%= category.categoryid %>'">
+        <div class="col-sm-6 mediumTitle gray" onclick="location.href='/categories/edit?categoryid=<%= category.categoryid %>'">
           <%= category.categoryname %>
         </div>
         <!--edit -->
