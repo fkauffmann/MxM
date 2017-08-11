@@ -1,0 +1,60 @@
+body {
+  margin-top: 72px;
+}
+.onclickStyle{
+  cursor: pointer;
+}
+
+/* Styles (so that we can see the grid) */
+.grid-container .col-sm-3,
+.grid-container .col-sm-6,
+.grid-container .col-sm-12
+{
+  border: 2px solid white;
+  background: #f5f5f5;
+  padding: 10px;
+}
+
+.grid-container table.menu-icon {
+  margin: 0px auto;
+  height: 64px;
+}
+
+.grid-container table.menu-icon td:nth-child(1) {
+  width: 60px;
+}
+
+.grid-container table.menu-icon td:nth-child(2) {
+  width: 120px;
+  text-align: left;
+}
+
+.bigTitle
+ {
+  line-height: 64px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.mediumTitle
+{
+  line-height: 64px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.blue{
+  color: #0275D8;
+}
+
+.gray{
+  color: #777777;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.noBgColor{
+  background-color: #ffffff !important;
+}

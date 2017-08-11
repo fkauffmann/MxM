@@ -5,26 +5,31 @@
 
 <form method='POST' action='/categories/save'>
 <!-- hidden input fields-->
-<input  type='hidden' name='docreate' value='<%= docreate ? "create" : "update"%>'>
+<input type='hidden' name='docreate' value='<%= docreate ? "create" : "update"%>'>
 <input type='hidden' name='categoryid' value='<%= category ? categoryid : "" %>'/>
 
-<div class="container-fluid icon-container" >
+<div class="container grid-container" >
   <div class="row">
-    <div class="col-sm-6" >
-        Category Name:
-    </div>
-    <div class="col-sm-6" >
-        <input class="form-control" minlength="2" type="text"  name='categoryname' value='<%= category ? category.categoryname : "" %>' required/>
+    <div class="col-sm-12" >
+
+      <div class="form-group">
+        <label for="categoryname">Category Name</label>
+        <input class="form-control" minlength="2" type="text" name='categoryname' id="categoryname" value='<%= category ? category.categoryname : "" %>' required/>
+      </div>
+
+      <div class="form-group">
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" name='reusable' id="reusable" <%= (category && category.reusable==1) ? "checked" : "" %> />
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Reusable</span>
+        </label>
+      </div>
+
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-6" >
-        Reusable:
-    </div>
-    <div class="col-sm-6" >
-        <input class="form-check-input" type='checkbox' name='reusable' <%= (category && category.reusable==1) ? "checked" : "" %> />
-    </div>
-  </div>
+</div>
+
+<div class="container grid-container textCenter" >
   <div class="row">
     <div class="col-sm-6 noBgColor" >
       <input type='submit' value='Save' class="btn btn-success"/>

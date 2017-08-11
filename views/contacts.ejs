@@ -3,7 +3,7 @@
 
 <h2><%= title%></h2>
 
-<div class="container-fluid icon-container" >
+<div class="container grid-container textCenter">
   <div class="row">
     <div class="col-sm-12 onclickStyle bigTitle blue" onclick="location.href='/contacts/add'">
       Add&nbsp;&nbsp;&nbsp;
@@ -15,7 +15,8 @@
   </div>
 </div>
 <% if (contactlist.length > 0) { %>
-  <div class="container-fluid icon-container" ><%
+  <div class="container grid-container textCenter">
+  <%
   for (var contact of contactlist) {
     %><div class="row">
         <div class="col-sm-6 mediumTitle gray" onclick="location.href='/contacts/edit?contactid=<%= contact.contactid %>'">
