@@ -5,7 +5,7 @@
 
 <div class="container-fluid icon-container" >
   <div class="row">
-    <div class="col-sm-12 onclickStyle bigTitle blue" onclick="location.href='/categories/add'">
+    <div class="col-sm-12 onclickStyle bigTitle blue" onclick="location.href='/contacts/add'">
       Add&nbsp;&nbsp;&nbsp;
       <span class="fa-stack fa-lg fa-2x fa-2x fa-2x">
         <i class="fa fa-circle fa-stack-2x" style="color:#0275D8; "></i>
@@ -14,22 +14,22 @@
     </div>
   </div>
 </div>
-<% if (categorylist.length > 0) { %>
+<% if (contactlist.length > 0) { %>
   <div class="container-fluid icon-container" ><%
-  for (var category of categorylist) {
+  for (var contact of contactlist) {
     %><div class="row">
-        <div class="col-sm-6 mediumTitle gray" onclick="location.href='/categories/edit?categoryid=<%= category.categoryid %>'">
-          <%= category.categoryname %>
+        <div class="col-sm-6 mediumTitle gray" onclick="location.href='/contacts/edit?contactid=<%= contact.contactid %>'">
+          <%= contact.fullname %>
         </div>
         <!--edit -->
-        <div class="col-sm-3 onclickStyle" onclick="location.href='/categories/edit?categoryid=<%= category.categoryid %>'">
+        <div class="col-sm-3 onclickStyle" onclick="location.href='/contacts/edit?contactid=<%= contact.contactid %>'">
           <span class="fa-stack fa-lg fa-2x fa-2x fa-2x">
 					  <i class="fa fa-circle fa-stack-2x" style="color:#0275D8; "></i>
 					  <i class="fa fa-pencil-square fa-stack-1x" style="color:#BFDCF5"></i>
 					</span>
         </div>
         <!-- delete -->
-        <div class="col-sm-3 onclickStyle" onclick="location.href='/categories/delete?categoryid=<%= category.categoryid %>'">
+        <div class="col-sm-3 onclickStyle" onclick="location.href='/contacts/delete?ontactid=<%= contact.contactid %>'">
           <span class="fa-stack fa-lg fa-2x fa-2x fa-2x">
 					  <i class="fa fa-circle fa-stack-2x" style="color:#0275D8; "></i>
 					  <i class="fa fa-trash-o fa-stack-1x" style="color:#BFDCF5"></i>

@@ -1,6 +1,8 @@
 <% include header%>
 <% include navbar%>
 
+<h2><%= title%></h2>
+
 <form method='POST' action='/categories/save'>
 <!-- hidden input fields-->
 <input  type='hidden' name='docreate' value='<%= docreate ? "create" : "update"%>'>
