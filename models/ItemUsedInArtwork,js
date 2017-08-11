@@ -1,0 +1,10 @@
+'use strict';
+
+module.exports = class ItemUsedInArtwork {
+  constructor(artworkid, itemid, quantity, workdate) {
+    this.artworkid = artworkid;
+    this.itemid = itemid;
+    this.quantity = quantity;
+		this.workdate = workdate;
+  }
+};
