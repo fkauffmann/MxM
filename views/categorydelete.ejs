@@ -6,7 +6,7 @@
 <form method='POST' action='/categories/delete/confirm'>
 
 <input type='hidden' name='categoryid' value='<%= category ? categoryid : "" %>'>
-<div class="container grid-container textCenter">
+<div class="container gridContainer textCenter">
   <div class="row">
     <div class="col-sm-12 bigTitle blue" >
         Are you sure?
@@ -14,10 +14,10 @@
   </div>
   <div class="row">
     <div class="col-sm-6 noBgColor">
-      <input type='submit' value='Delete' class="btn btn-success" />
+      <a href="/categories" class="btn btn-warning" >Cancel</a>
     </div>
     <div class="col-sm-6 noBgColor">
-      <a href="/categories" class="btn btn-warning" >Cancel</a>
+      <input type='submit' value='Delete' class="btn btn-success" />
     </div>
   </div>
 </div>

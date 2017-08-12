@@ -1,6 +1,6 @@
 <% include header%>
 <% include navbar%>
-
+<h2><%= title%></h2>
 <form method='POST' action='/items/save'>
 <!-- hidden input fields-->
 <input  type='hidden' name='docreate' value='<%= docreate ? "create" : "update"%>'>
@@ -22,15 +22,40 @@ for ( var i = 0; i < categorylist.length; i++ )
 %>
 </select>
 
+<div class="container gridContainer" >
+  <div class="row">
+  	<div class="col-sm-6" >
+	      <div class="form-group">
+	        <label for="maker">Maker</label>
+	        <input required minlength="2" class="form-control" type="text" name='maker' id="maker" value='<%= item ? item.maker : "" %>' />
+	      </div>
+		</div>
+		<div class="col-sm-6" >
+				<div class="form-group">
+					<label for="makerref">Maker Reference</label>
+					<input required minlength="2" class="form-control" type="text" name='makerref' id="makerref" value='<%= item ? item.makerref : "" %>' />
+				</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="provider">Provider</label>
+				<input minlenght="2" class="form-control" type='text' name='provider' id='provider' value='<%= item ? item.provider : "" %>' />
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="providerurl">Provider URL</label>
+				<input class="form-control" type='text' name='providerurl' id='providerurl' value='<%= item ? item.providerurl : "" %>' />
+			</div>
+		</div>
+	</div>
 
-<br/>Maker<br/>
-<input type='text' name='maker' value='<%= item ? item.maker : "" %>' />
-<br/>Maker Reference<br/>
-<input type='text' name='makerref' value='<%= item ? item.makerref : "" %>' />
-<br/>Provider<br/>
-<input type='text' name='provider' value='<%= item ? item.provider : "" %>' />
-<br/>Provider URL<br/>
-<input type='text' name='providerurl' value='<%= item ? item.providerurl : "" %>' />
+
+</div>
+
+
 <br/>Last Purchase Date<br/>
 <input type='text' name='lastpurchasedate' value='<%= item ? item.lastpurchasedate : "" %>' />
 <br/>Price<br/>

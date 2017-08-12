@@ -1,9 +1,10 @@
 <% include header%>
 <% include navbar%>
 
-<div class="container-fluid icon-container" >
+<h2><%= title%></h2>
+<div class="container icon-container gridContainer textCenter" >
   <div class="row">
-    <div class="col-sm-12 onclickStyle" onclick="location.href='/items/add'">
+    <div class="col-sm-12 bigTitle blue onclickStyle" onclick="location.href='/items/add'">
       Add&nbsp;&nbsp;&nbsp;
       <span class="fa-stack fa-lg fa-2x fa-2x fa-2x">
         <i class="fa fa-circle fa-stack-2x" style="color:#0275D8; "></i>
@@ -13,10 +14,10 @@
   </div>
 </div>
 <% if (itemlist.length > 0) { %>
-  <div class="container-fluid icon-container" ><%
+  <div class="container icon-container gridContainer textCenter" ><%
   for (var item of itemlist) {
     %><div class="row">
-        <div class="col-sm-6 onclickStyle" onclick="location.href='/items/edit?itemid=<%= item.itemid %>'">
+        <div class="col-sm-6 mediumTitle gray onclickStyle" onclick="location.href='/items/edit?itemid=<%= item.itemid %>'">
           <%= item.shortname %>
         </div>
         <!--edit -->

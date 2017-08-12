@@ -3,7 +3,7 @@
 
 <h2><%= title%></h2>
 
-<div class="container grid-container textCenter">
+<div class="container gridContainer textCenter">
   <div class="row">
     <div class="col-sm-12 onclickStyle bigTitle blue" onclick="location.href='/categories/add'">
       Add&nbsp;&nbsp;&nbsp;
@@ -14,8 +14,9 @@
     </div>
   </div>
 </div>
+
 <% if (categorylist.length > 0) { %>
-  <div class="container grid-container textCenter"><%
+  <div class="container gridContainer textCenter"><%
   for (var category of categorylist) {
     %><div class="row">
         <div class="col-sm-6 mediumTitle gray" onclick="location.href='/categories/edit?categoryid=<%= category.categoryid %>'">

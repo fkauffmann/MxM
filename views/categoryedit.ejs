@@ -8,13 +8,13 @@
 <input type='hidden' name='docreate' value='<%= docreate ? "create" : "update"%>'>
 <input type='hidden' name='categoryid' value='<%= category ? categoryid : "" %>'/>
 
-<div class="container grid-container" >
+<div class="container gridContainer" >
   <div class="row">
     <div class="col-sm-12" >
 
       <div class="form-group">
         <label for="categoryname">Category Name</label>
-        <input class="form-control" minlength="2" type="text" name='categoryname' id="categoryname" value='<%= category ? category.categoryname : "" %>' required/>
+        <input required  minlength="2"  class="form-control" type="text" name='categoryname' id="categoryname" value='<%= category ? category.categoryname : "" %>' />
       </div>
 
       <div class="form-group">
@@ -29,13 +29,13 @@
   </div>
 </div>
 
-<div class="container grid-container textCenter" >
+<div class="container gridContainer textCenter" >
   <div class="row">
     <div class="col-sm-6 noBgColor" >
-      <input type='submit' value='Save' class="btn btn-success"/>
+      <a href="/categories" class="btn btn-warning" >Cancel</a>
     </div>
     <div class="col-sm-6 noBgColor" >
-      <a href="/categories" class="btn btn-warning" >Cancel</a>
+      <input type='submit' value='Save' class="btn btn-success"/>
     </div>
   </div>
 </div>
