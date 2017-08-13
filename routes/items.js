@@ -110,7 +110,7 @@ router.get('/delete', (req, res, next) => {
   items.read(req.query.itemid)
     .then(item => {
       res.render('itemdelete', {
-        title: item ? ("Delete Item {" + item.shortname + "}": "",
+        title: item ? ("Delete Item {" + item.shortname + "}"): "",
         itemid: req.query.itemid,
         item: item
       });
