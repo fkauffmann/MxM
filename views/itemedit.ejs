@@ -10,8 +10,8 @@
 	<div class="row">
   	<div class="col-sm-6" >
 	      <div class="form-group">
-	        <label for="shortnameItem">Shortname</label>
-					<input class="form-control" type='text' name='shortnameItem' value='<%= item ? item.shortname : "" %>' />
+	        <label for="shortname">Shortname</label>
+					<input required minlength="2" class="form-control" type='text' id="shortname"name='shortname' value='<%= item ? item.shortname : "" %>' />
 				</div>
 		</div>
 		<div class="col-sm-6" >
@@ -32,20 +32,18 @@
 				</select>
 			</div>
 		</div>
-	</div>	
-
-
+	</div>
   <div class="row">
   	<div class="col-sm-6" >
 	      <div class="form-group">
 	        <label for="maker">Producer</label>
-	        <input required minlength="2" class="form-control" type="text" name='maker' id="maker" value='<%= item ? item.maker : "" %>' />
+	        <input  class="form-control" type="text" name='maker' id="maker" value='<%= item ? item.maker : "" %>' />
 	      </div>
 		</div>
 		<div class="col-sm-6" >
 				<div class="form-group">
-					<label for="makerref">Porducer Reference</label>
-					<input required minlength="2" class="form-control" type="text" name='makerref' id="makerref" value='<%= item ? item.makerref : "" %>' />
+					<label for="makerref">Producer Reference</label>
+					<input class="form-control" type="text" name='makerref' id="makerref" value='<%= item ? item.makerref : "" %>' />
 				</div>
 		</div>
 	</div>
@@ -53,45 +51,107 @@
 		<div class="col-sm-6">
 			<div class="form-group">
 				<label for="provider">Provider</label>
-				<input minlenght="2" class="form-control" type='text' name='provider' id='provider' value='<%= item ? item.provider : "" %>' />
+				<input class="form-control" type='text' name='provider' id='provider' value='<%= item ? item.provider : "" %>' />
 			</div>
 		</div>
 		<div class="col-sm-6">
 			<div class="form-group">
 				<label for="providerurl">Provider URL</label>
-				<input class="form-control" type='text' name='providerurl' id='providerurl' value='<%= item ? item.providerurl : "" %>' />
+				<input class="form-control" type='url' name='providerurl' id='providerurl' value='<%= item ? item.providerurl : "" %>' />
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="form-group">
+				<label for="lastpurchasedate">Last Purchase Date</label>
+				<input dateISO class="form-control" type='date' name='lastpurchasedate' id='lastpurchasedate' value='<%= item ? item.lastpurchasedate : "" %>' />
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="price">Price</label>
+				<input class="form-control" type='text' name='price' id='price'  value='<%= item ? item.price : "" %>' />
+			</div>
+		</div>
+
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="vat">VAT in %</label>
+				<input class="form-control" type='text' name='vat' id='vat' value='<%= item ? item.vat : "" %>' />
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="form-group">
+				<label for="unit">Unit</label>
+				<input class="form-control" type='text' name='unit' id='unit'  value='<%= item ? item.unit : "" %>' />
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="width">Width</label>
+				<input class="form-control" type='text' name='width' id='width'  value='<%= item ? item.width : "" %>' />
+			</div>
+		</div>
+
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="height">Height</label>
+				<input class="form-control" type='text' name='height' id='height' value='<%= item ? item.height : "" %>' />
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="diameter">Diameter</label>
+				<input class="form-control" type='text' name='diameter' id='diameter' value='<%= item ? item.diameter : "" %>' />
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="quantityinstock">Quantity in Stock</label>
+				<input class="form-control" type='text' name='quantityinstock' id='quantityinstock'  value='<%= item ? item.quantityinstock : "" %>' />
+			</div>
+		</div>
+
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="quantityordered">Quantity ordered on last purchase</label>
+				<input class="form-control" type='text' name='quantityordered' id='quantityordered' value='<%= item ? item.quantityordered : "" %>' />
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="form-group">
+				<label for="stocklimitalert">Stock Limit Alert</label>
+				<input class="form-control" type='text' name='stocklimitalert' id='stocklimitalert'  value='<%= item ? item.stocklimitalert : "" %>' />
 			</div>
 		</div>
 	</div>
 
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="form-group">
+				<label for="note">Note</label>
+				<textarea class="form-control" type='text' rows="5" name='note' id='note'><%= item ? item.note : "" %></textarea>
+			</div>
+		</div>
+	</div>
 
 </div>
 
-
-<br/>Last Purchase Date<br/>
-<input type='text' name='lastpurchasedate' value='<%= item ? item.lastpurchasedate : "" %>' />
-<br/>Price<br/>
-<input type='text' name='price' value='<%= item ? item.price : "" %>' />
-<br/>VAT<br/>
-<input type='text' name='vat' value='<%= item ? item.vat : "" %>' />
-<br/>Unit<br/>
-<input type='text' name='unit' value='<%= item ? item.unit : "" %>' />
-<br/>Width<br/>
-<input type='text' name='width' value='<%= item ? item.width : "" %>' />
-<br/>Height<br/>
-<input type='text' name='height' value='<%= item ? item.height : "" %>' />
-<br/>Diameter<br/>
-<input type='text' name='diameter' value='<%= item ? item.diameter : "" %>' />
 <br/>Picture<br/>
 <input type='text' name='picture' value='<%= item ? item.picture : "" %>' />
-<br/>Note<br/>
-<input type='text' name='note' value='<%= item ? item.note : "" %>' />
-<br/>Quantity in Stock<br/>
-<input type='text' name='quantityinstock' value='<%= item ? item.quantityinstock : "" %>' />
-<br/>Quantity ordered<br/>
-<input type='text' name='quantityordered' value='<%= item ? item.quantityordered : "" %>' />
-<br/>Stock Limit Alert<br/>
-<input type='text' name='stocklimitalert' value='<%= item ? item.stocklimitalert : "" %>' />
+
+
 
 <br/>
 <input type='submit' value='Submit' />

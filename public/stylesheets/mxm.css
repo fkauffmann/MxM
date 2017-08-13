@@ -12,8 +12,17 @@ h2{
 }
 
 /* Styles (so that we can see the grid) */
+.gridContainer .col-sm-1,
+.gridContainer .col-sm-2,
 .gridContainer .col-sm-3,
+.gridContainer .col-sm-4,
+.gridContainer .col-sm-5,
 .gridContainer .col-sm-6,
+.gridContainer .col-sm-7,
+.gridContainer .col-sm-8,
+.gridContainer .col-sm-9,
+.gridContainer .col-sm-10,
+.gridContainer .col-sm-11,
 .gridContainer .col-sm-12
 {
   border: 2px solid white;
