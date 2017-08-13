@@ -6,33 +6,45 @@
 <input  type='hidden' name='docreate' value='<%= docreate ? "create" : "update"%>'>
 <input type='hidden' name='itemid' value='<%= item ? itemid : "" %>'/>
 
-<br/>Shortname<br/>
-<input type='text' name='shortname' value='<%= item ? item.shortname : "" %>' />
-<br/>Category<br/>
-<select name="categoryid">
-<%
-for ( var i = 0; i < categorylist.length; i++ )
-{
-		var categoryid = item ? item.categoryid : "";
-		var selected = (categoryid == categorylist[i].categoryid) ? "selected" : "";
-    %>
-		<option value="<%=categorylist[ i ].categoryid %>" <%=selected %>><%=categorylist[ i ].categoryname %></option>
-		<%
-}
-%>
-</select>
-
 <div class="container gridContainer" >
+	<div class="row">
+  	<div class="col-sm-6" >
+	      <div class="form-group">
+	        <label for="shortnameItem">Shortname</label>
+					<input class="form-control" type='text' name='shortnameItem' value='<%= item ? item.shortname : "" %>' />
+				</div>
+		</div>
+		<div class="col-sm-6" >
+			<div class="form-group">
+				<label for="Category">Category</label>
+				<select required name="categoryid" class="custom-select">
+					<option selected value="">Choose a category...</option>
+				<%
+				for ( var i = 0; i < categorylist.length; i++ )
+				{
+						var categoryid = item ? item.categoryid : "";
+						var selected = (categoryid == categorylist[i].categoryid) ? "selected" : "";
+				    %>
+						<option value="<%=categorylist[ i ].categoryid %>" <%=selected %>><%=categorylist[ i ].categoryname %></option>
+						<%
+				}
+				%>
+				</select>
+			</div>
+		</div>
+	</div>	
+
+
   <div class="row">
   	<div class="col-sm-6" >
 	      <div class="form-group">
-	        <label for="maker">Maker</label>
+	        <label for="maker">Producer</label>
 	        <input required minlength="2" class="form-control" type="text" name='maker' id="maker" value='<%= item ? item.maker : "" %>' />
 	      </div>
 		</div>
 		<div class="col-sm-6" >
 				<div class="form-group">
-					<label for="makerref">Maker Reference</label>
+					<label for="makerref">Porducer Reference</label>
 					<input required minlength="2" class="form-control" type="text" name='makerref' id="makerref" value='<%= item ? item.makerref : "" %>' />
 				</div>
 		</div>

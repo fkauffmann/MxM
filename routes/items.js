@@ -92,7 +92,7 @@ router.get('/edit', (req, res, next) => {
       items.categorylist()
         .then(categorylist => {
           res.render('itemedit', {
-            title: item ? ("Edit " + item.shortname) : "Add an Item",
+            title: item ? ("Edit Item {" + item.shortname + "}") : "Add an Item",
             docreate: false,
             itemid: req.query.itemid,
             categorylist: categorylist,
@@ -110,7 +110,7 @@ router.get('/delete', (req, res, next) => {
   items.read(req.query.itemid)
     .then(item => {
       res.render('itemdelete', {
-        title: item ? item.shortname : "",
+        title: item ? ("Delete Item {" + item.shortname + "}": "",
         itemid: req.query.itemid,
         item: item
       });

@@ -77,7 +77,7 @@ router.get('/view', (req, res, next) => {
   categories.read(req.query.categoryid)
     .then(category => {
       res.render('categoryview', {
-        title: category ? ("View [" + category.categoryname + "]") : "",
+        title: category ? ("View Category {" + category.categoryname + "}") : "",
         categoryid: req.query.categoryid,
         category: category
       });
@@ -92,7 +92,7 @@ router.get('/edit', (req, res, next) => {
   categories.read(req.query.categoryid)
     .then(category => {
       res.render('categoryedit', {
-        title: category ? ("Edit [" + category.categoryname + "]") : "Add a Category",
+        title: category ? ("Edit Category {" + category.categoryname + "}") : "Add a Category",
         docreate: false,
         categoryid: req.query.categoryid,
         category: category
@@ -108,7 +108,7 @@ router.get('/delete', (req, res, next) => {
   categories.read(req.query.categoryid)
     .then(category => {
       res.render('categorydelete', {
-        title: category ? ("Delete [" + category.categoryname + "]") : "",
+        title: category ? ("Delete Category {" + category.categoryname + "}") : "",
         categoryid: req.query.categoryid,
         category: category
       });
