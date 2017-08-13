@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var config = require("../config");
 
 var fs = require('fs');
 
@@ -21,7 +22,9 @@ router.get('/items', function(req, res, next) {
 
   res.render('gallery', {
     title: 'Items Gallery',
-    imageURLs: imageURLs
+    imageURLs: imageURLs,
+    version: config.version,
+    units: config.units
   });
 });
 
