@@ -1,0 +1,38 @@
+<% include header%>
+
+<!-- Navigation bar start -->
+<nav class="navbar navbar-toggleable-md fixed-top navbar-inverse bg-primary">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+    </button>
+  <a class="navbar-brand" href="#"><b><%= title%></b></a>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fa fa-window-close" aria-hidden="true"></i>
+          &nbsp;&nbsp;&nbsp;Close</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+<!-- Navigation bar end -->
+
+
+<h2>Please select a picture</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <%
+        for (var imageURL of imageURLs) {
+      %>
+        <img src="<%=imageURL%>">
+      <%
+        }
+      %>
+    </div>
+  </div>
+</div>
+<% include bodyEndAndScripts%>

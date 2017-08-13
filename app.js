@@ -12,6 +12,7 @@ var categories  = require('./routes/categories');
 var items  = require('./routes/items');
 var contacts = require('./routes/contacts');
 var about = require('./routes/about');
+var gallery = require('./routes/gallery')
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use('/categories', categories);
 app.use('/items', items);
 app.use('/contacts', contacts);
 app.use('/about', about);
+app.use('/gallery', gallery);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
