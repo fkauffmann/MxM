@@ -19,16 +19,16 @@
 				<label for="Category">Category</label>
 				<select required name="categoryid" class="form-control custom-select">
 					<option selected value="">Choose a category...</option>
-				<%
-				for ( var i = 0; i < categorylist.length; i++ )
-				{
-						var categoryid = item ? item.categoryid : "";
-						var selected = (categoryid == categorylist[i].categoryid) ? "selected" : "";
-				    %>
-						<option value="<%=categorylist[ i ].categoryid %>" <%=selected %>><%=categorylist[ i ].categoryname %></option>
-						<%
-				}
-				%>
+					<%
+					for ( var i = 0; i < categorylist.length; i++ )
+					{
+							var categoryid = item ? item.categoryid : "";
+							var selected = (categoryid == categorylist[i].categoryid) ? "selected" : "";
+					    %>
+							<option value="<%=categorylist[ i ].categoryid %>" <%=selected %>><%=categorylist[ i ].categoryname %></option>
+							<%
+					}
+					%>
 				</select>
 			</div>
 		</div>
@@ -50,13 +50,26 @@
 	<div class="row">
 		<div class="col-sm-6">
 			<div class="form-group">
-				<label for="contactid">Contact ID</label>
-				<input class="form-control" type='text' name='contactid' id='contactid' value='<%= item ? item.contactid : "" %>' />
+				<label for="contactid">Supplier</label>
+				<select required name="contactid" id='contactid' class="form-control custom-select">
+					<option selected value="">Choose a supplier...</option>
+					<%
+					for ( var i = 0; i < supplierlist.length; i++ )
+					{
+							var contactid = item ? item.contactid : "";
+							var selected = (contactid == supplierlist[i].contactid) ? "selected" : "";
+					    %>
+							<option value="<%=supplierlist[ i ].contactid %>" <%=selected %>><%=supplierlist[ i ].enterprise %></option>
+							<%
+					}
+					%>
+				</select>
+
 			</div>
 		</div>
 		<div class="col-sm-6">
 			<div class="form-group">
-				<label for="providerurl">Provider URL</label>
+				<label for="providerurl">Supplier URL</label>
 				<input class="form-control" type='url' name='providerurl' id='providerurl' value='<%= item ? item.providerurl : "" %>' />
 			</div>
 		</div>

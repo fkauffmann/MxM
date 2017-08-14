@@ -48,22 +48,24 @@ router.get('/', function(req, res, next) {
 
 // Add Item (create)
 router.get('/add', (req, res, next) => {
-
   items.categorylist()
     .then(categorylist => {
-      res.render('itemedit', {
-        title: "Add an Item",
-        docreate: true,
-        itemid: "",
-        item: undefined,
-        categorylist: categorylist,
-    		unitlist: config.units
-      });
+			items.supplierlist()
+				.then(supplierlist => {
+		      res.render('itemedit', {
+		        title: "Add an Item",
+		        docreate: true,
+		        itemid: "",
+		        item: undefined,
+		        categorylist: categorylist,
+						supplierlist: supplierlist,
+		    		unitlist: config.units
+					})
+      })
     })
     .catch(err => {
       next(err);
     });
-
 });
 
 // Save Item (update)
@@ -93,14 +95,18 @@ router.get('/edit', (req, res, next) => {
     .then(item => {
       items.categorylist()
         .then(categorylist => {
-          res.render('itemedit', {
-            title: item ? ("Edit Item {" + item.shortname + "}") : "Add an Item",
-            docreate: false,
-            itemid: req.query.itemid,
-            categorylist: categorylist,
-            item: item,
-						unitlist: config.units
-          });
+					items.supplierlist()
+					.then(supplierlist => {
+						res.render('itemedit', {
+	            title: item ? ("Edit Item {" + item.shortname + "}") : "Add an Item",
+	            docreate: false,
+	            itemid: req.query.itemid,
+	            categorylist: categorylist,
+							supplierlist: supplierlist,
+	            item: item,
+							unitlist: config.units
+	          })
+					})
         })
     })
     .catch(err => {

@@ -8,6 +8,7 @@ const error = require('debug')('notes:error');
 
 const Item = require('./Item');
 const Category = require('./Category');
+const Supplier = require('./Supplier');
 
 sqlite3.verbose();
 var db; // store the database connection here
@@ -144,6 +145,27 @@ exports.categorylist = function() {
           })
 
           resolve(categorylist);
+        });
+    });
+  });
+};
+
+// Returns the list of all available suppliers
+exports.supplierlist = function() {
+  return exports.connectDB().then(() => {
+    return new Promise((resolve, reject) => {
+      db.all("select ContactID, Enterprise from Contact where ContactType='Supplier' order by Enterprise",
+        (err, rows) => {
+          if (err) return reject(err);
+
+          var supplierlist = [];
+
+          rows.forEach(function(row) {
+            var supplier = new Supplier(row.ContactID, row.Enterprise);
+            supplierlist.push(supplier);
+          })
+
+          resolve(supplierlist);
         });
     });
   });
