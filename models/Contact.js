@@ -5,6 +5,7 @@ module.exports = class Contact {
 		contactid,
 		firstname,
 		lastname,
+		contacttype,
 		enterprise,
 		job,
 		meetat,
@@ -22,6 +23,7 @@ module.exports = class Contact {
 		this.contactid = contactid;
 		this.firstname = firstname;
 		this.lastname = lastname;
+		this.contacttype = contacttype;
 		this.enterprise = enterprise;
 		this.job = job;
 		this.meetat = meetat;

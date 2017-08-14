@@ -27,12 +27,12 @@ exports.connectDB = function() {
   });
 };
 
-exports.create = function(contactid, firstname, lastname, enterprise, job, meetat, meetdate, street, postcode, city, country, mail, website, phone, cancontact, note) {
+exports.create = function(contactid, firstname, lastname, contacttype, enterprise, job, meetat, meetdate, street, postcode, city, country, mail, website, phone, cancontact, note) {
   return exports.connectDB().then(() => {
-    var contact = new Contact(contactid, firstname, lastname, enterprise, job, meetat, meetdate, street, postcode, city, country, mail, website, phone, cancontact, note);
+    var contact = new Contact(contactid, firstname, lastname, contacttype, enterprise, job, meetat, meetdate, street, postcode, city, country, mail, website, phone, cancontact, note);
     return new Promise((resolve, reject) => {
-      db.run("INSERT INTO Contact ( ContactID, FirstName, LastName, Enterprise, Job, MeetAt, MeetDate, Street, PostCode, City, Country, Mail, Website, Phone, CanContact, Note ) " +
-        "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? );", [contactid, firstname, lastname, enterprise, job, meetat, meetdate, street, postcode, city, country, mail, website, phone, cancontact, note], err => {
+      db.run("INSERT INTO Contact ( ContactID, FirstName, LastName, ContactType, Enterprise, Job, MeetAt, MeetDate, Street, PostCode, City, Country, Mail, Website, Phone, CanContact, Note ) " +
+        "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? );", [contactid, firstname, lastname, contacttype, enterprise, job, meetat, meetdate, street, postcode, city, country, mail, website, phone, cancontact, note], err => {
           if (err) reject(err);
           else {
             log('CREATE ' + util.inspect(contact));
@@ -43,13 +43,13 @@ exports.create = function(contactid, firstname, lastname, enterprise, job, meeta
   });
 };
 
-exports.update = function(contactid, firstname, lastname, enterprise, job, meetat, meetdate, street, postcode, city, country, mail, website, phone, cancontact, note) {
+exports.update = function(contactid, firstname, lastname, contacttype, enterprise, job, meetat, meetdate, street, postcode, city, country, mail, website, phone, cancontact, note) {
   return exports.connectDB().then(() => {
-    var contact = new Contact(contactid, firstname, lastname, enterprise, job, meetat, meetdate, street, postcode, city, country, mail, website, phone, cancontact, note);
+    var contact = new Contact(contactid, firstname, lastname, contacttype, enterprise, job, meetat, meetdate, street, postcode, city, country, mail, website, phone, cancontact, note);
     return new Promise((resolve, reject) => {
       db.run("UPDATE Contact " +
-        "SET FirstName = ?, LastName = ?, Enterprise = ?, Job = ?, MeetAt = ?, MeetDate = ?, Street = ?, PostCode = ?, City = ?, Country = ?, Mail = ?, Website = ?, Phone = ?, CanContact = ?, Note = ? " +
-        "WHERE ContactID = ?", [firstname, lastname, enterprise, job, meetat, meetdate, street, postcode, city, country, mail, website, phone, cancontact, note, contactid], err => {
+        "SET FirstName = ?, LastName = ?, ContactType = ?, Enterprise = ?, Job = ?, MeetAt = ?, MeetDate = ?, Street = ?, PostCode = ?, City = ?, Country = ?, Mail = ?, Website = ?, Phone = ?, CanContact = ?, Note = ? " +
+        "WHERE ContactID = ?", [firstname, lastname, contacttype, enterprise, job, meetat, meetdate, street, postcode, city, country, mail, website, phone, cancontact, note, contactid], err => {
           if (err) reject(err);
           else {
             log('UPDATE ' + util.inspect(contact));
@@ -71,7 +71,7 @@ exports.read = function(contactid) {
         else if (!row) {
           reject(new Error("No item found for " + contactid));
         } else {
-          var contact = new Contact(row.ContactID, row.FirstName, row.LastName, row.Enterprise, row.Job, row.MeetAt, row.MeetDate, row.Street, row.PostCode, row.City, row.Country, row.Mail, row.Website, row.Phone, row.CanContact, row.Note);
+          var contact = new Contact(row.ContactID, row.FirstName, row.LastName, row.ContactType, row.Enterprise, row.Job, row.MeetAt, row.MeetDate, row.Street, row.PostCode, row.City, row.Country, row.Mail, row.Website, row.Phone, row.CanContact, row.Note);
           log('READ ' + util.inspect(contact));
           resolve(contact);
         }
@@ -98,7 +98,7 @@ exports.keylist = function() {
   return exports.connectDB().then(() => {
     return new Promise((resolve, reject) => {
       var keyz = [];
-      db.each("SELECT ContactID FROM Contact ORDER BY LastName, FirstName",
+      db.each("SELECT ContactID FROM Contact ORDER BY LastName, FirstName, Enterprise",
         (err, row) => {
           if (err) reject(err);
           else keyz.push(row.ContactID);

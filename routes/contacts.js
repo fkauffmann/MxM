@@ -23,9 +23,24 @@ router.get('/', function(req, res, next) {
         keyPromises.push(
           contacts.read(key)
           .then(contact => {
+						var fullname = "";
+
+						if (contact.lastname != null && contact.firstname != null) {
+							fullname = contact.lastname.toUpperCase() + ' ' + contact.firstname;
+						}
+						if (contact.lastname != null && contact.firstname == null) {
+							fullname = contact.lastname.toUpperCase();
+						}
+						if (contact.lastname == null && contact.firstname != null) {
+							fullname = contact.firstname;
+						}
+						if (contact.lastname == null && contact.firstname == null) {
+							fullname = contact.enterprise;
+						}
+
             return {
               contactid: contact.contactid,
-              fullname: contact.lastname.toUpperCase() + ' ' + contact.firstname
+              fullname: fullname
             };
           })
         );
