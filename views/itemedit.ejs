@@ -85,7 +85,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-12">
+		<div class="col-sm-4">
 			<div class="form-group">
 				<label for="unit">Unit</label>
 				<select name="unit" id="unit" class="form-control custom-select">
@@ -100,11 +100,26 @@
 				}
 				%>
 				</select>
+			</div>
+		</div>
 
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="quantityinstock">Quantity in Stock</label>
+				<input class="form-control" type='text' name='quantityinstock' id='quantityinstock'  value='<%= item ? item.quantityinstock : "" %>' />
+			</div>
+		</div>
 
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="quantityordered">Quantity ordered on last purchase</label>
+				<input class="form-control" type='text' name='quantityordered' id='quantityordered' value='<%= item ? item.quantityordered : "" %>' />
 			</div>
 		</div>
 	</div>
+
+
+
 	<div class="row">
 		<div class="col-sm-4">
 			<div class="form-group">
@@ -123,21 +138,6 @@
 			<div class="form-group">
 				<label for="diameter">Diameter</label>
 				<input class="form-control" type='text' name='diameter' id='diameter' value='<%= item ? item.diameter : "" %>' />
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-6">
-			<div class="form-group">
-				<label for="quantityinstock">Quantity in Stock</label>
-				<input class="form-control" type='text' name='quantityinstock' id='quantityinstock'  value='<%= item ? item.quantityinstock : "" %>' />
-			</div>
-		</div>
-
-		<div class="col-sm-6">
-			<div class="form-group">
-				<label for="quantityordered">Quantity ordered on last purchase</label>
-				<input class="form-control" type='text' name='quantityordered' id='quantityordered' value='<%= item ? item.quantityordered : "" %>' />
 			</div>
 		</div>
 	</div>
@@ -166,7 +166,18 @@
 
 
 <br/>
-<input type='submit' value='Submit' />
+<div class="container gridContainer textCenter" >
+  <div class="row">
+    <div class="col-sm-6 noBgColor" >
+      <a href="/items" class="btn btn-warning" >Cancel</a>
+    </div>
+    <div class="col-sm-6 noBgColor" >
+      <input type='submit' value='Save' class="btn btn-success"/>
+    </div>
+  </div>
+</div>
+
+
 </form>
 
 <% include bodyEndAndScripts%>
