@@ -71,11 +71,11 @@ router.post('/save', (req, res, next) => {
   var p;
   if (req.body.docreate === "create") {
     p = items.create(guid(),
-      req.body.shortname, req.body.categoryid, req.body.maker, req.body.makerref, req.body.provider, req.body.providerurl, req.body.lastpurchasedate, req.body.price, req.body.vat, req.body.unit, req.body.width, req.body.height, req.body.diameter, req.body.picture, req.body.note, req.body.quantityinstock, req.body.quantityordered, req.body.stocklimitalert
+      req.body.shortname, req.body.categoryid, req.body.maker, req.body.makerref, req.body.contactid, req.body.providerurl, req.body.lastpurchasedate, req.body.price, req.body.vat, req.body.unit, req.body.width, req.body.height, req.body.diameter, req.body.picture, req.body.note, req.body.quantityinstock, req.body.quantityordered, req.body.stocklimitalert
     );
   } else {
     p = items.update(req.body.itemid,
-      req.body.shortname, req.body.categoryid, req.body.maker, req.body.makerref, req.body.provider, req.body.providerurl, req.body.lastpurchasedate, req.body.price, req.body.vat, req.body.unit, req.body.width, req.body.height, req.body.diameter, req.body.picture, req.body.note, req.body.quantityinstock, req.body.quantityordered, req.body.stocklimitalert
+      req.body.shortname, req.body.categoryid, req.body.maker, req.body.makerref, req.body.contactid, req.body.providerurl, req.body.lastpurchasedate, req.body.price, req.body.vat, req.body.unit, req.body.width, req.body.height, req.body.diameter, req.body.picture, req.body.note, req.body.quantityinstock, req.body.quantityordered, req.body.stocklimitalert
     );
   }
   p.then(item => {

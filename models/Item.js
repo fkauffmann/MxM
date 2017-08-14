@@ -7,7 +7,7 @@ module.exports = class Item {
     categoryid,
     maker,
     makerref,
-    provider,
+    contactid,
     providerurl,
     lastpurchasedate,
     price,
@@ -27,7 +27,7 @@ module.exports = class Item {
     this.categoryid = categoryid;
     this.maker = maker;
     this.makerref = makerref;
-    this.provider = provider;
+    this.contactid = contactid;
     this.providerurl = providerurl;
     this.lastpurchasedate = lastpurchasedate;
     this.price = price;

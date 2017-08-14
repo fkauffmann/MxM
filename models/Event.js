@@ -14,9 +14,7 @@ module.exports = class Event {
 		starttime,
 		enddate,
 		endtime,
-		contactperson,
-		contactpersonphone,
-		contactpersonmail,
+		contactid,
 		candidatureselectionprocedure,
 		website,
 		stallfee,
@@ -50,9 +48,7 @@ module.exports = class Event {
 		this.starttime = starttime;
 		this.enddate = enddate;
 		this.endtime = endtime;
-		this.contactperson = contactperson;
-		this.contactpersonphone = contactpersonphone;
-		this.contactpersonmail = contactpersonmail;
+		this.contactid = contactid;
 		this.candidatureselectionprocedure = candidatureselectionprocedure;
 		this.website = website;
 		this.stallfee = stallfee;
