@@ -11,13 +11,13 @@
   	<div class="col-sm-6" >
 	      <div class="form-group">
 	        <label for="shortname">Shortname</label>
-					<input required minlength="2" class="form-control" type='text' id="shortname"name='shortname' value='<%= item ? item.shortname : "" %>' />
+					<input required minlength="2" class="form-control" type='text' id="shortname" name='shortname' value='<%= item ? item.shortname : "" %>' />
 				</div>
 		</div>
 		<div class="col-sm-6" >
 			<div class="form-group">
 				<label for="Category">Category</label>
-				<select required name="categoryid" class="custom-select">
+				<select required name="categoryid" class="form-control custom-select">
 					<option selected value="">Choose a category...</option>
 				<%
 				for ( var i = 0; i < categorylist.length; i++ )
@@ -88,7 +88,20 @@
 		<div class="col-sm-12">
 			<div class="form-group">
 				<label for="unit">Unit</label>
-				<input class="form-control" type='text' name='unit' id='unit'  value='<%= item ? item.unit : "" %>' />
+				<select name="unit" id="unit" class="form-control custom-select">
+				<%
+				for ( var i = 0; i < unitlist.length; i++ )
+				{
+						var unit = item ? item.unit : "";
+						var selected = (unit == unitlist[i]) ? "selected" : "";
+				    %>
+						<option value="<%=unitlist[i] %>" <%=selected %>><%=unitlist[i]%></option>
+						<%
+				}
+				%>
+				</select>
+
+
 			</div>
 		</div>
 	</div>
@@ -150,7 +163,6 @@
 
 <br/>Picture<br/>
 <input type='text' name='picture' value='<%= item ? item.picture : "" %>' />
-
 
 
 <br/>

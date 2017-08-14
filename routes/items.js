@@ -4,6 +4,7 @@ var util = require('util');
 var express = require('express');
 var router = express.Router();
 var items = require('../models/items-memory');
+var config = require('../config.js');
 
 function guid() {
   function s4() {
@@ -55,7 +56,8 @@ router.get('/add', (req, res, next) => {
         docreate: true,
         itemid: "",
         item: undefined,
-        categorylist: categorylist
+        categorylist: categorylist,
+    		unitlist: config.units
       });
     })
     .catch(err => {
@@ -96,7 +98,8 @@ router.get('/edit', (req, res, next) => {
             docreate: false,
             itemid: req.query.itemid,
             categorylist: categorylist,
-            item: item
+            item: item,
+						unitlist: config.units
           });
         })
     })
