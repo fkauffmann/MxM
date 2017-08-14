@@ -7,12 +7,14 @@
 var app = require('../app');
 var debug = require('debug')('mxm:server');
 var http = require('http');
+var config = require('../config.js')
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || config.port);
+console.log("Starting MxM server on port " + config.port);
 app.set('port', port);
 
 /**
