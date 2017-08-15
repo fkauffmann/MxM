@@ -125,7 +125,7 @@
 
 		<div class="col-sm-4">
 			<div class="form-group">
-				<label for="quantityordered">Quantity ordered on last purchase</label>
+				<label for="quantityordered">Qty ordered on last purchase</label>
 				<input class="form-control" type='text' name='quantityordered' id='quantityordered' value='<%= item ? item.quantityordered : "" %>' />
 			</div>
 		</div>
@@ -174,9 +174,8 @@
 
 </div>
 
-<br/>Picture<br/>
-<input type='text' name='picture' value='<%= item ? item.picture : "" %>' />
-
+<input type='hidden' name='picture' id='pictureURL' value='<%= item ? item.picture : "" %>' />
+<img src="" id='picturePreview' class="img-fluid mx-auto d-block" alt="Sample photo" onclick="loadPicture()">
 
 <br/>
 <div class="container gridContainer textCenter" >
@@ -192,5 +191,26 @@
 
 
 </form>
+
+<script>
+	$(document).ready(function() {
+		var picURL = $("#pictureURL").val();	// Page load
+
+		if (picURL == ""){
+			picURL = "/gallery/items/no_picture.jpg";
+		}
+		$("#picturePreview").attr("src", picURL);
+	})
+
+	function loadPicture(){
+		var popup = window.open("/gallery/items", "_blank", "fullscreen=yes, status=no, titlebar=no, toolbar=no", false);
+	};
+
+	function getReturnFromPopup(url){
+
+		$("#picturePreview").attr("src", url);
+		$("#pictureURL").val(url);
+	}
+</script>
 
 <% include bodyEndAndScripts%>
