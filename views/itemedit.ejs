@@ -204,6 +204,9 @@
 
 	function loadPicture(){
 		var popup = window.open("/gallery/items", "_blank", "fullscreen=yes, status=no, titlebar=no, toolbar=no", false);
+
+		popup.moveTo(0,0);
+		popup.resizeTo(screen.width,screen.height);
 	};
 
 	function getReturnFromPopup(url){
