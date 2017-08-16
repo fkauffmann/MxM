@@ -1,3 +1,2 @@
 @echo off
-echo Starting MxM Server...
 npm start

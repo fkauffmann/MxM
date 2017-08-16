@@ -3,7 +3,7 @@
 var util = require('util');
 var express = require('express');
 var router = express.Router();
-var contacts = require('../models/contacts-memory');
+var contacts = require('../models/contacts-persist');
 
 function guid() {
   function s4() {

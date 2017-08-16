@@ -3,7 +3,7 @@
 var util = require('util');
 var express = require('express');
 var router = express.Router();
-var items = require('../models/items-memory');
+var items = require('../models/items-persist');
 var config = require('../config.js');
 
 function guid() {

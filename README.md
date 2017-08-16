@@ -49,8 +49,8 @@
 
 ### Model
 
-+ Apply changes above to Item.js and items-memory.js
-+ Apply changes above to Contact.js and contacts-memory.js
++ Apply changes above to Item.js and items-persist.js
++ Apply changes above to Contact.js and contacts-persist.js
 
 ### Controllers
 
