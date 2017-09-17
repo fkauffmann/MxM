@@ -4,6 +4,7 @@ var util = require('util');
 var express = require('express');
 var router = express.Router();
 var contacts = require('../models/contacts-persist');
+var config = require('../config.js');
 
 function guid() {
   function s4() {
@@ -15,6 +16,25 @@ function guid() {
     s4() + '-' + s4() + s4() + s4();
 }
 
+function getFullName(contact){
+  var fullname = "";
+
+  if (contact.lastname != null && contact.firstname != null) {
+    fullname = contact.firstname + ' ' + contact.lastname.toUpperCase() ;
+  }
+  if (contact.lastname != null && contact.firstname == null) {
+    fullname = contact.lastname.toUpperCase();
+  }
+  if (contact.lastname == null && contact.firstname != null) {
+    fullname = contact.firstname;
+  }
+  if (contact.lastname == null && contact.firstname == null) {
+    fullname = contact.enterprise;
+  }
+  return fullname;
+
+}
+
 router.get('/', function(req, res, next) {
   contacts.keylist()
     .then(keylist => {
@@ -23,24 +43,9 @@ router.get('/', function(req, res, next) {
         keyPromises.push(
           contacts.read(key)
           .then(contact => {
-						var fullname = "";
-
-						if (contact.lastname != null && contact.firstname != null) {
-							fullname = contact.lastname.toUpperCase() + ' ' + contact.firstname;
-						}
-						if (contact.lastname != null && contact.firstname == null) {
-							fullname = contact.lastname.toUpperCase();
-						}
-						if (contact.lastname == null && contact.firstname != null) {
-							fullname = contact.firstname;
-						}
-						if (contact.lastname == null && contact.firstname == null) {
-							fullname = contact.enterprise;
-						}
-
             return {
               contactid: contact.contactid,
-              fullname: fullname
+              fullname: getFullName(contact)
             };
           })
         );
@@ -65,7 +70,7 @@ router.get('/add', (req, res, next) => {
     docreate: true,
     contactid: "",
     contact: undefined,
-		contacttypelist: config.contactTypes        
+		contacttypelist: config.contactTypes
   });
 });
 
@@ -92,23 +97,8 @@ router.post('/save', (req, res, next) => {
 router.get('/view', (req, res, next) => {
   contacts.read(req.query.contactid)
     .then(contact => {
-      var fullname = "";
-
-      if (contact.lastname != null && contact.firstname != null) {
-        fullname = contact.lastname.toUpperCase() + ' ' + contact.firstname;
-      }
-      if (contact.lastname != null && contact.firstname == null) {
-        fullname = contact.lastname.toUpperCase();
-      }
-      if (contact.lastname == null && contact.firstname != null) {
-        fullname = contact.firstname;
-      }
-      if (contact.lastname == null && contact.firstname == null) {
-        fullname = contact.enterprise;
-      }
-
       res.render('contactview', {
-        title: contact ? ("View Contact {" + fullname + "}") : "",
+        title: contact ? ("View Contact {" + getFullName(contact) + "}") : "",
         contactid: req.query.contactid,
         contact: contact,
 		    contacttypelist: config.contactTypes
@@ -123,23 +113,8 @@ router.get('/view', (req, res, next) => {
 router.get('/edit', (req, res, next) => {
   contacts.read(req.query.contactid)
     .then(contact => {
-      var fullname = "";
-
-      if (contact.lastname != null && contact.firstname != null) {
-        fullname = contact.lastname.toUpperCase() + ' ' + contact.firstname;
-      }
-      if (contact.lastname != null && contact.firstname == null) {
-        fullname = contact.lastname.toUpperCase();
-      }
-      if (contact.lastname == null && contact.firstname != null) {
-        fullname = contact.firstname;
-      }
-      if (contact.lastname == null && contact.firstname == null) {
-        fullname = contact.enterprise;
-      }
-
       res.render('contactedit', {
-        title: contact ? ("Edit Contact {" + fullname + "}") : "Add a Contact",
+        title: contact ? ("Edit Contact {" + getFullName(contact) + "}") : "Add a Contact",
         docreate: false,
         contactid: req.query.contactid,
         contact: contact,
@@ -155,23 +130,8 @@ router.get('/edit', (req, res, next) => {
 router.get('/delete', (req, res, next) => {
   contacts.read(req.query.contactid)
     .then(contact => {
-      var fullname = "";
-
-      if (contact.lastname != null && contact.firstname != null) {
-        fullname = contact.lastname.toUpperCase() + ' ' + contact.firstname;
-      }
-      if (contact.lastname != null && contact.firstname == null) {
-        fullname = contact.lastname.toUpperCase();
-      }
-      if (contact.lastname == null && contact.firstname != null) {
-        fullname = contact.firstname;
-      }
-      if (contact.lastname == null && contact.firstname == null) {
-        fullname = contact.enterprise;
-      }
-
       res.render('contactdelete', {
-        title: contact ? ("Delete Contact {" + fullname + "}") : "",
+        title: contact ? ("Delete Contact {" + getFullName(contact) + "}") : "",
         contactid: req.query.contactid,
         contact: contact
       });

@@ -1,0 +1,123 @@
+<% include header%>
+<% include navbar%>
+<h2><%= title%></h2>
+<form method='POST' action='/contacts/save'>
+<!-- hidden input fields-->
+<input type='hidden' name='docreate' value='<%= docreate ? "create" : "update"%>'>
+<input type='hidden' name='contactid' value='<%= contact ? contactid : "" %>'/>
+
+<div class="container gridContainer" >
+  <div class="row">
+    <div class="col-sm-6" >
+      <div class="form-group">
+        <label for="firstname">Firstname</label>
+        <input required  minlength="2"  class="form-control" type="text" name='firstname' id="firstname" value='<%= contact ? contact.firstname : "" %>' />
+      </div>
+    </div>
+    <div class="col-sm-6" >
+      <div class="form-group">
+        <label for="lastname">Lastname</label>
+        <input required  minlength="2"  class="form-control" type="text" name='lastname' id="lastname" value='<%= contact ? contact.lastname : "" %>' />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4" >
+      <div class="form-group">
+        <label for="contacttype">Contact Type</label>
+        <input class="form-control" type="text" name='contacttype' id="contacttype" value='<%= contact ? contact.contacttype : "" %>' />
+      </div>
+    </div>
+    <div class="col-sm-4" >
+      <div class="form-group">
+        <label for="enterprise">Enterprise</label>
+        <input class="form-control" type="text" name='enterprise' id="enterprise" value='<%= contact ? contact.enterprise : "" %>' />
+      </div>
+    </div>
+    <div class="col-sm-4" >
+      <div class="form-group">
+        <label for="job">Job</label>
+        <input class="form-control" type="text" name='job' id="job" value='<%= contact ? contact.job : "" %>' />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6" >
+      <h4 class="blue">Address</h4>
+      <div class="form-group">
+        <label for="street">Street</label>
+        <input class="form-control" type="text" name='street' id="street" value='<%= contact ? contact.street : "" %>' />
+      </div>
+      <div class="form-group">
+        <label for="postcode">Postcode</label>
+        <input class="form-control" type="text" name='postcode' id="postcode" value='<%= contact ? contact.postcode : "" %>' />
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input class="form-control" type="text" name='city' id="city" value='<%= contact ? contact.city : "" %>' />
+      </div>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input class="form-control" type="text" name='country' id="country" value='<%= contact ? contact.country : "" %>' />
+      </div>
+    </div>
+    <div class="col-sm-6" >
+      <h4 class="blue">Contact possibilities</h4>
+      <div class="form-group">
+        <label for="mail">Mail</label>
+        <input class="form-control" type="text" name='mail' id="mail" value='<%= contact ? contact.mail : "" %>' />
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input class="form-control" type="text" name='phone' id="phone" value='<%= contact ? contact.phone : "" %>' />
+      </div>
+      <div class="form-group">
+        <label for="website">Website</label>
+        <input class="form-control" type="text" name='website' id="website" value='<%= contact ? contact.website : "" %>' />
+      </div>
+      <div class="form-group">
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" name='cancontact' id="cancontact" <%= (contact && contact.cancontact==1) ? "checked" : "" %> />
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Can contact for marketing purpose</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4" >
+      <div class="form-group">
+				<label for="meetdate">Meet date</label>
+				<input dateISO class="form-control" type='date' name='meetdate' id='meetdate' value='<%= contact ? contact.meetdate : "" %>' />
+			</div>
+      <div class="form-group">
+        <label for="meetat">Meet at</label>
+        <input class="form-control" type="text" name='meetat' id="meetat" value='<%= contact ? contact.meetat : "" %>' />
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="form-group">
+        <label for="note">Note</label>
+        <textarea class="form-control" type='text' rows="5" name='note' id='note'><%= contact ? contact.note : "" %></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="container gridContainer textCenter" >
+  <div class="row">
+    <div class="col-sm-6 noBgColor" >
+      <a href="/contacts" class="btn btn-warning" >Cancel</a>
+    </div>
+    <div class="col-sm-6 noBgColor" >
+      <input type='submit' value='Save' class="btn btn-success"/>
+    </div>
+  </div>
+</div>
+</form>
+
+<% include bodyEndAndScripts%>
