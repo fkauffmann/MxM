@@ -33,6 +33,7 @@
 			</div>
 		</div>
 	</div>
+
   <div class="row">
   	<div class="col-sm-6" >
 	      <div class="form-group">
@@ -47,10 +48,11 @@
 				</div>
 		</div>
 	</div>
+
 	<div class="row">
 		<div class="col-sm-6">
 			<div class="form-group">
-				<label for="contactid">Supplier</label>
+				<label for="contactid">Default supplier</label>
 				<select required name="contactid" id='contactid' class="form-control custom-select">
 					<option selected value="">Choose a supplier...</option>
 					<%
@@ -74,29 +76,22 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="row">
-		<div class="col-sm-12">
+		<div class="col-sm-6">
 			<div class="form-group">
 				<label for="lastpurchasedate">Last Purchase Date</label>
 				<input dateISO class="form-control" type='date' name='lastpurchasedate' id='lastpurchasedate' value='<%= item ? item.lastpurchasedate : "" %>' />
 			</div>
 		</div>
-	</div>
-	<div class="row">
 		<div class="col-sm-6">
 			<div class="form-group">
-				<label for="price">Price</label>
+				<label for="price">Price (Average price of all orders + shipping costs)</label>
 				<input class="form-control" type='text' name='price' id='price'  value='<%= item ? item.price : "" %>' />
 			</div>
 		</div>
-
-		<div class="col-sm-6">
-			<div class="form-group">
-				<label for="vat">VAT in %</label>
-				<input class="form-control" type='text' name='vat' id='vat' value='<%= item ? item.vat : "" %>' />
-			</div>
-		</div>
 	</div>
+
 	<div class="row">
 		<div class="col-sm-4">
 			<div class="form-group">
@@ -115,23 +110,19 @@
 				</select>
 			</div>
 		</div>
-
 		<div class="col-sm-4">
 			<div class="form-group">
 				<label for="quantityinstock">Quantity in Stock</label>
 				<input class="form-control" type='text' name='quantityinstock' id='quantityinstock'  value='<%= item ? item.quantityinstock : "" %>' />
 			</div>
 		</div>
-
 		<div class="col-sm-4">
 			<div class="form-group">
-				<label for="quantityordered">Qty ordered on last purchase</label>
-				<input class="form-control" type='text' name='quantityordered' id='quantityordered' value='<%= item ? item.quantityordered : "" %>' />
+				<label for="stocklimitalert">Stock Limit Alert</label>
+				<input class="form-control" type='text' name='stocklimitalert' id='stocklimitalert'  value='<%= item ? item.stocklimitalert : "" %>' />
 			</div>
 		</div>
 	</div>
-
-
 
 	<div class="row">
 		<div class="col-sm-4">
@@ -154,14 +145,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-sm-12">
-			<div class="form-group">
-				<label for="stocklimitalert">Stock Limit Alert</label>
-				<input class="form-control" type='text' name='stocklimitalert' id='stocklimitalert'  value='<%= item ? item.stocklimitalert : "" %>' />
-			</div>
-		</div>
-	</div>
+
 
 	<div class="row">
 		<div class="col-sm-12">
