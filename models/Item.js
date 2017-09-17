@@ -11,7 +11,6 @@ module.exports = class Item {
     providerurl,
     lastpurchasedate,
     price,
-    vat,
     unit,
     width,
     height,
@@ -19,7 +18,6 @@ module.exports = class Item {
     picture,
     note,
     quantityinstock,
-    quantityordered,
     stocklimitalert
   ) {
     this.itemid = itemid;
@@ -31,7 +29,6 @@ module.exports = class Item {
     this.providerurl = providerurl;
     this.lastpurchasedate = lastpurchasedate;
     this.price = price;
-    this.vat = vat;
     this.unit = unit;
     this.width = width;
     this.height = height;
@@ -39,7 +36,6 @@ module.exports = class Item {
     this.picture = picture;
     this.note = note;
     this.quantityinstock = quantityinstock;
-    this.quantityordered = quantityordered;
     this.stocklimitalert = stocklimitalert;
   }
 };

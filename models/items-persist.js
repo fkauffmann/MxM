@@ -29,12 +29,12 @@ exports.connectDB = function() {
   });
 };
 
-exports.create = function(itemid, shortname, categoryid, maker, makerref, contactid, providerurl, lastpurchasedate, price, vat, unit, width, height, diameter, picture, note, quantityinstock, quantityordered, stocklimitalert) {
+exports.create = function(itemid, shortname, categoryid, maker, makerref, contactid, providerurl, lastpurchasedate, price, unit, width, height, diameter, picture, note, quantityinstock, stocklimitalert) {
   return exports.connectDB().then(() => {
-    var item = new Item(itemid, shortname, categoryid, maker, makerref, contactid, providerurl, lastpurchasedate, price, vat, unit, width, height, diameter, picture, note, quantityinstock, quantityordered, stocklimitalert);
+    var item = new Item(itemid, shortname, categoryid, maker, makerref, contactid, providerurl, lastpurchasedate, price, unit, width, height, diameter, picture, note, quantityinstock,  stocklimitalert);
     return new Promise((resolve, reject) => {
-      db.run("INSERT INTO Item ( ItemID, ShortName, CategoryID, Maker, MakerRef, ContactID, ProviderURL, LastPurchaseDate, Price, VAT, Unit, Width, Height, Diameter, Picture, Note, QuantityInStock, QuantityOrdered, StockLimitAlert ) " +
-        "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? );", [itemid, shortname, categoryid, maker, makerref, contactid, providerurl, lastpurchasedate, price, vat, unit, width, height, diameter, picture, note, quantityinstock, quantityordered, stocklimitalert], err => {
+      db.run("INSERT INTO Item ( ItemID, ShortName, CategoryID, Maker, MakerRef, ContactID, ProviderURL, LastPurchaseDate, Price, Unit, Width, Height, Diameter, Picture, Note, QuantityInStock, StockLimitAlert ) " +
+        "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? );", [itemid, shortname, categoryid, maker, makerref, contactid, providerurl, lastpurchasedate, price, unit, width, height, diameter, picture, note, quantityinstock, stocklimitalert], err => {
           if (err) reject(err);
           else {
             log('CREATE ' + util.inspect(item));
@@ -45,13 +45,13 @@ exports.create = function(itemid, shortname, categoryid, maker, makerref, contac
   });
 };
 
-exports.update = function(itemid, shortname, categoryid, maker, makerref, contactid, providerurl, lastpurchasedate, price, vat, unit, width, height, diameter, picture, note, quantityinstock, quantityordered, stocklimitalert) {
+exports.update = function(itemid, shortname, categoryid, maker, makerref, contactid, providerurl, lastpurchasedate, price, unit, width, height, diameter, picture, note, quantityinstock, stocklimitalert) {
   return exports.connectDB().then(() => {
-    var item = new Item(itemid, shortname, categoryid, maker, makerref, contactid, providerurl, lastpurchasedate, price, vat, unit, width, height, diameter, picture, note, quantityinstock, quantityordered, stocklimitalert);
+    var item = new Item(itemid, shortname, categoryid, maker, makerref, contactid, providerurl, lastpurchasedate, price, unit, width, height, diameter, picture, note, quantityinstock, stocklimitalert);
     return new Promise((resolve, reject) => {
       db.run("UPDATE Item " +
-        "SET ShortName = ?, CategoryID = ?, Maker = ?, MakerRef = ?, ContactID = ?, ProviderURL = ?, LastPurchaseDate = ?, Price = ?, VAT = ?, Unit = ?, Width = ?, Height = ?, Diameter = ?, Picture = ?, Note = ?, QuantityInStock = ?, QuantityOrdered = ?, StockLimitAlert = ? " +
-        "WHERE ItemID = ?", [shortname, categoryid, maker, makerref, contactid, providerurl, lastpurchasedate, price, vat, unit, width, height, diameter, picture, note, quantityinstock, quantityordered, stocklimitalert, itemid], err => {
+        "SET ShortName = ?, CategoryID = ?, Maker = ?, MakerRef = ?, ContactID = ?, ProviderURL = ?, LastPurchaseDate = ?, Price = ?, Unit = ?, Width = ?, Height = ?, Diameter = ?, Picture = ?, Note = ?, QuantityInStock = ?, StockLimitAlert = ? " +
+        "WHERE ItemID = ?", [shortname, categoryid, maker, makerref, contactid, providerurl, lastpurchasedate, price, unit, width, height, diameter, picture, note, quantityinstock, stocklimitalert, itemid], err => {
           if (err) reject(err);
           else {
             log('UPDATE ' + util.inspect(item));
@@ -73,7 +73,7 @@ exports.read = function(itemid) {
         else if (!row) {
           reject(new Error("No item found for " + itemid));
         } else {
-          var item = new Item(row.ItemID, row.ShortName, row.CategoryID, row.Maker, row.MakerRef, row.ContactID, row.ProviderURL, row.LastPurchaseDate, row.Price, row.VAT, row.Unit, row.Width, row.Height, row.Diameter, row.Picture, row.Note, row.QuantityInStock, row.QuantityOrdered, row.StockLimitAlert);
+          var item = new Item(row.ItemID, row.ShortName, row.CategoryID, row.Maker, row.MakerRef, row.ContactID, row.ProviderURL, row.LastPurchaseDate, row.Price, row.Unit, row.Width, row.Height, row.Diameter, row.Picture, row.Note, row.QuantityInStock, row.StockLimitAlert);
           log('READ ' + util.inspect(item));
           resolve(item);
         }
