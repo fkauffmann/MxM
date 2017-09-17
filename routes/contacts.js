@@ -74,14 +74,14 @@ router.get('/add', (req, res, next) => {
   });
 });
 
-// Save Category (update)
+// Save Contact (update)
 router.post('/save', (req, res, next) => {
   var p;
   if (req.body.docreate === "create") {
     p = contacts.create(guid(),
       req.body.firstname, req.body.lastname, req.body.contacttype, req.body.enterprise, req.body.job, req.body.meetat, req.body.meetdate, req.body.street, req.body.postcode, req.body.city, req.body.country, req.body.mail, req.body.website, req.body.phone, req.body.cancontact ? true : false, req.body.note);
   } else {
-    p = categories.update(req.body.contactid,
+    p = contacts.update(req.body.contactid,
       req.body.firstname, req.body.lastname, req.body.contacttype, req.body.enterprise, req.body.job, req.body.meetat, req.body.meetdate, req.body.street, req.body.postcode, req.body.city, req.body.country, req.body.mail, req.body.website, req.body.phone, req.body.cancontact ? true : false, req.body.note);
   }
   p.then(contact => {
@@ -93,7 +93,7 @@ router.post('/save', (req, res, next) => {
     });
 });
 
-// Read Category (read)
+// Read Contact (read)
 router.get('/view', (req, res, next) => {
   contacts.read(req.query.contactid)
     .then(contact => {
