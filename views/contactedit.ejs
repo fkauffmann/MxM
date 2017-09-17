@@ -26,7 +26,19 @@
     <div class="col-sm-4" >
       <div class="form-group">
         <label for="contacttype">Contact Type</label>
-        <input class="form-control" type="text" name='contacttype' id="contacttype" value='<%= contact ? contact.contacttype : "" %>' />
+        <!--<input class="form-control" type="text" name='contacttype' id="contacttype" value='<%= contact ? contact.contacttype : "" %>' />-->
+        <select name="contacttype" id="contacttype" class="form-control custom-select">
+				<%
+				for ( var i = 0; i < contacttypelist.length; i++ )
+				{
+						var type = contact ? contact.contacttype : "";
+						var selected = (type == contacttypelist[i]) ? "selected" : "";
+				    %>
+						<option value="<%=contacttypelist[i] %>" <%=selected %>><%=contacttypelist[i]%></option>
+						<%
+				}
+				%>
+				</select>
       </div>
     </div>
     <div class="col-sm-4" >
